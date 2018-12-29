@@ -29,11 +29,26 @@ class Livre
     private $titre;
 
     /**
-     * @var boolean
+     * @var string
      *
-     * @ORM\Column(name="dispo", type="boolean", nullable=false)
+     * @ORM\Column(name="descriptif", type="string", length=255, nullable=false)
      */
-    private $dispo;
+    private $descriptif;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ISBN", type="string", length=255, nullable=false)
+     */
+    private $ISBN;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateedition", type="datetime", nullable=false)
+     */
+    private $dateedition;
+
 
     /**
      * @var \Auteur
@@ -82,27 +97,75 @@ class Livre
     }
 
     /**
-     * Set dispo
+     * Set descriptif
      *
-     * @param boolean $dispo
+     * @param string $descriptif
      *
      * @return Livre
      */
-    public function setDispo($dispo)
+    public function setDescriptif($descriptif)
     {
-        $this->dispo = $dispo;
+        $this->descriptif = $descriptif;
 
         return $this;
     }
 
     /**
-     * Get dispo
+     * Get descriptif
      *
-     * @return boolean
+     * @return string
      */
-    public function getDispo()
+    public function getDescriptif()
     {
-        return $this->dispo;
+        return $this->descriptif;
+    }
+
+    /**
+     * Set ISBN
+     *
+     * @param string $ISBN
+     *
+     * @return Livre
+     */
+    public function setISBN($ISBN)
+    {
+        $this->ISBN = $ISBN;
+
+        return $this;
+    }
+
+    /**
+     * Get ISBN
+     *
+     * @return string
+     */
+    public function getISBN()
+    {
+        return $this->ISBN;
+    }
+
+    /**
+     * Set dateedition
+     *
+     * @param \DateTime $dateedition
+     *
+     * @return Livre
+     */
+    public function setDateedition($dateedition)
+    {
+        $this->dateedition = $dateedition;
+
+        return $this;
+    }
+
+    /**
+     * Get dateedition
+     *
+     * @return \DateTime
+     */
+    public function getDateedition()
+    {
+        return $this->dateedition;
     }
 
     /**
@@ -112,7 +175,7 @@ class Livre
      *
      * @return Livre
      */
-    public function setAuteur(\AppBundle\Entity\Auteur $auteur = null)
+    public function setAuteur(\AppBundle\Entity\Auteur $auteur = null) //
     {
         $this->auteur = $auteur;
 
