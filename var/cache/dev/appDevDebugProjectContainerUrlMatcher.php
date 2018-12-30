@@ -120,6 +120,18 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             }
             not_app_auteur_get:
 
+            // app_auteur_getbooksauteur
+            if (preg_match('#^/authors/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                $ret = $this->mergeDefaults(array_replace($matches, array('_route' => 'app_auteur_getbooksauteur')), array (  '_controller' => 'AppBundle\\Controller\\AuteurController::getBooksAuteurAction',));
+                if (!in_array($canonicalMethod, array('GET'))) {
+                    $allow = array_merge($allow, array('GET'));
+                    goto not_app_auteur_getbooksauteur;
+                }
+
+                return $ret;
+            }
+            not_app_auteur_getbooksauteur:
+
             // app_auteur_addauthor
             if ('/authors' === $pathinfo) {
                 $ret = array (  '_controller' => 'AppBundle\\Controller\\AuteurController::addAuthor',  '_route' => 'app_auteur_addauthor',);

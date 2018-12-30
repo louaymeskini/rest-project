@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 use AppBundle\Entity\Auteur;
+use AppBundle\Entity\Livre;
 
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Controller\FOSRestController;
@@ -24,6 +25,18 @@ class AuteurController extends FOSRestController
     if ($result === null) 
         return new View("there are no authors", Response::HTTP_NOT_FOUND);
     return $result;
+    }
+
+
+    /**
+    * @Rest\Get("/authors/{id}")
+    */
+    public function getBooksAuteurAction($id)
+    {
+        $res = $this->getDoctrine()
+        ->getRepository(Livre::class)
+        ->AuteurBooks($id);
+        return $res; 
     }
 
     /**
